@@ -1,6 +1,6 @@
 # Álbum da viagem
 
-Site estático (web/, sem framework, ES modules) + Supabase do pombaiera (schema `album`, bucket `album`).
+Site estático (web/, sem framework, ES modules) + projeto Supabase próprio `album` (schema `album`, bucket `album`) — NUNCA o do pombaiera: os dados do jogo são da turma e podem ser pedidos pela FEALQ.
 
 - O site só fala com RPCs `public.album_*` (security definer, `search_path = ''`), que conferem o código
   via `album.confere` (sha256 de `viagem:codigo`; o código de admin também vale como da turma).

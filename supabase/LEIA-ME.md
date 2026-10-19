@@ -1,7 +1,19 @@
 # Álbum — configurar o Supabase
 
-Usa o **mesmo projeto do Jogo do Pombo** (o endereço e a chave já estão em `web/config.js`).
-Nada do pombo é mexido: o álbum fica num schema próprio (`album`) e num bucket próprio (`album`).
+Usa um **projeto Supabase só dele**, separado do Jogo do Pombo (os dados do jogo são da turma
+e não devem se misturar com fotos de ninguém). O plano grátis permite 2 projetos ativos.
+
+## 0. Criar o projeto (uma vez só)
+
+1. Em [supabase.com](https://supabase.com) → *New project*, nome **album**, região perto
+   (São Paulo, `sa-east-1`). Senha do banco: *Generate a password* e guarde — o site não usa.
+   Deixe **Enable Data API** marcado e **desmarque** *Automatically expose new tables*.
+2. Em **Project Settings → API Keys** (ou *Connect*), copie a **Project URL** e a chave
+   **publishable** (`sb_publishable_...`). ⚠️ Nunca a *secret* / *service_role*.
+3. Cole as duas em [`web/config.js`](../web/config.js), commit e push.
+
+Projeto grátis **pausa depois de 7 dias sem uso** — o link para de abrir até você clicar em
+*Restore project* no dashboard (dá até 90 dias). Baixe o `.zip` logo que fechar o álbum.
 
 ## 1. Criar as tabelas, funções e o bucket (uma vez só)
 

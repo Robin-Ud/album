@@ -70,6 +70,10 @@ async function iniciar() {
     st.sessao = { viagem: DEMO_VIAGEM, codigo: DEMO_CODIGO, participante: eu.id, nome: eu.nome, pasta: st.api.db.pasta, admin: DEMO_ADMIN };
     document.title = "Álbum (demo)";
   } else {
+    if (!SUPABASE_URL || !SUPABASE_KEY) {
+      $("#tela-sem-link p").textContent = "O álbum ainda não foi ligado ao banco (web/config.js vazio).";
+      return telas("tela-sem-link");
+    }
     st.api = criarSupabase(SUPABASE_URL, SUPABASE_KEY);
     st.viagem = location.hash.replace(/^#\/?/, "").trim();
     if (!/^[0-9a-f-]{36}$/i.test(st.viagem)) return telas("tela-sem-link");
