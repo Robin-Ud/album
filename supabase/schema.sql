@@ -74,6 +74,13 @@ create table if not exists album.eventos (
 create index if not exists eventos_participante_idx on album.eventos (participante, geracao, id);
 
 revoke all on all tables in schema album from public, anon, authenticated;
+-- RLS ligado sem policy = ninguém de fora lê nada, mesmo se alguém expor o schema por engano.
+-- As funções album_* são security definer do dono das tabelas (postgres), que não passa pelo RLS.
+alter table album.viagens       enable row level security;
+alter table album.participantes enable row level security;
+alter table album.fotos         enable row level security;
+alter table album.votos         enable row level security;
+alter table album.eventos       enable row level security;
 
 -- ---------------- ajudantes (internos) ----------------
 create or replace function album.hash(p_viagem uuid, p_codigo text) returns text
