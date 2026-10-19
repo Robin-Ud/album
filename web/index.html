@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1b1a17" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f6f3ec" media="(prefers-color-scheme: light)">
+  <meta name="robots" content="noindex">
+  <title>Álbum da viagem</title>
+  <link rel="icon" href="icone.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+  <div id="erro-global" class="aviso erro hidden" role="alert"></div>
+
+  <!-- sem link -->
+  <section id="tela-sem-link" class="tela">
+    <div class="centro">
+      <div class="logo">🏍️</div>
+      <h1>Álbum da viagem</h1>
+      <p class="muted">Abra o link que mandaram no grupo — ele tem o endereço da viagem depois do <b>#</b>.</p>
+    </div>
+  </section>
+
+  <!-- entrar -->
+  <section id="tela-entrar" class="tela">
+    <form id="form-entrar" class="centro cartao">
+      <div class="logo">🏍️</div>
+      <h1>Álbum da viagem</h1>
+      <p class="muted">Cada um sobe as próprias fotos, todo mundo escolhe junto as que vão pro álbum.</p>
+      <label>Código da viagem<input id="in-codigo" autocomplete="off" autocapitalize="none" required></label>
+      <label>Seu nome<input id="in-nome" maxlength="40" autocomplete="given-name" required></label>
+      <button class="btn primario" type="submit">Entrar</button>
+      <p id="msg-entrar" class="erro-txt"></p>
+    </form>
+  </section>
+
+  <!-- app -->
+  <section id="tela-app" class="tela">
+    <header class="topo">
+      <div class="topo-linha">
+        <div>
+          <h1 id="nome-viagem"></h1>
+          <button id="btn-pessoa" class="pessoa" title="Trocar de pessoa"></button>
+        </div>
+        <button id="btn-admin" class="btn icone" title="Organizar (admin)">⚙</button>
+      </div>
+      <ol id="fases" class="fases"></ol>
+    </header>
+    <main id="conteudo"></main>
+    <div id="barra" class="barra hidden"></div>
+  </section>
+
+  <!-- visor de foto -->
+  <div id="visor" class="visor hidden" role="dialog" aria-modal="true">
+    <img id="visor-img" alt="">
+    <button class="visor-btn fechar" data-visor="fechar" aria-label="Fechar">✕</button>
+    <button class="visor-btn ant" data-visor="ant" aria-label="Anterior">‹</button>
+    <button class="visor-btn prox" data-visor="prox" aria-label="Próxima">›</button>
+    <div class="visor-rodape">
+      <span id="visor-legenda"></span>
+      <div id="visor-acoes"></div>
+    </div>
+  </div>
+
+  <!-- painel do admin -->
+  <div id="painel" class="painel hidden" role="dialog" aria-modal="true">
+    <div class="painel-caixa">
+      <div class="painel-topo"><h2>Organizar</h2><button class="btn icone" data-painel="fechar" aria-label="Fechar">✕</button></div>
+      <div id="painel-corpo"></div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script type="module" src="app.js?v=1"></script>
+</body>
+</html>
